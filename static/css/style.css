@@ -32,4 +32,9 @@ p {
 
 img{
   float:right;
+  margin-bottom: 20px;
+}
+input[type='text']{
+  color : blue;
+  padding-right: 80px;
 }
