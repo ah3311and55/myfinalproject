@@ -32,4 +32,13 @@ p {
 
 img{
   float:right;
+<<<<<<< HEAD
 }
+=======
+  margin-bottom: 20px;
+}
+input[type='text']{
+  color : blue;
+  padding-right: 80px;
+}
+>>>>>>> 6bb9c501369edd4297c18bffb771485712a6ca86
