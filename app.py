@@ -23,6 +23,9 @@ def go_to_form():
 	lastName = request.form['lastname']
 	gender = request.form['gender']
 	return render_template('form.html', firstName = firstName, lastName=lastName, gender=gender)
+@app.route('/Dailyvote')	
+def go_to_Dailyvote():
+	return render_template('Dailyvote.html')
 # TODO: route to /error
 
 if __name__ == "__main__":
