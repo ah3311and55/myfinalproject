@@ -7,10 +7,14 @@ app.secret_key = os.urandom(24)
 # TODO: set up database
 
 
+
 @app.route('/')
-@app.route('/home')
 def homepage():
 	return render_template('home.html')
+
+@app.route('/register')
+def go_to_register():
+	return render_template('register.html')
 
 # TODO: route to /register
 
