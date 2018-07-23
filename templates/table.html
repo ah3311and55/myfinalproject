@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> Database Information </h1>
+{% for entry in messages %}
+<p> Hello {{entry['firstName']}} {{entry['lastName']}}</p>
+{% endfor %}
+{% endblock %}
