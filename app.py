@@ -16,8 +16,6 @@ def homepage():
 def go_to_register():
 	return render_template('register.html')
 
-# TODO: route to /register
-
 # TODO: route to /error
 
 if __name__ == "__main__":
