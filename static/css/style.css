@@ -47,6 +47,10 @@ img{
     margin-left:33%;
   }
 .button:hover{
-  background: white;
+  background: #00332E;
+}
+.form2{
+  margin-left: 33%;
+  color: blue;
 }
 
