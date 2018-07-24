@@ -4,7 +4,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #0066ff;
+  background-color: #468189;
 }
 
 li {
@@ -35,9 +35,25 @@ img{
 
 }
 
-  margin-bottom: 20px;
+
+  
 }
-input[type='text']{
-  color : blue;
-  padding-right: 80px;
+.button {
+    background-color: #6D435A;
+    border: none;
+    color: white;
+    padding: 30px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-top:3%;
+    margin-left:33%;
+  }
+.button:hover{
+  background: #00332E;
+}
+.form2{
+  margin-left: 33%;
+  color: blue;
 }
