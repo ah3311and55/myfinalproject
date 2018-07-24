@@ -32,7 +32,11 @@ p {
 
 img{
   float:right;
-  margin-bottom: 20px;
+
+}
+
+
+  
 }
 .button {
     background-color: #6D435A;
@@ -56,4 +60,3 @@ img{
 
 
 }
-
