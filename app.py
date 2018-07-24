@@ -7,6 +7,9 @@ app.secret_key = os.urandom(24)
 # TODO: set up database
 
 
+@app.route('/')
+def default():
+	return render_template('home.html')
 
 @app.route('/home')
 def homepage():
@@ -32,9 +35,9 @@ def go_to_Weeklyvote():
 @app.route('/Veganvote')
 def go_to_Veganvote():
 	return render_template('Veganvote.html')	
-@app.route('/Suggestions')	
+@app.route('/CreateMessage')	
 def go_to_Suggestions():
-	message = request.form['message']
+	# message = request.form['message']
 	return render_template('SuggestionsPage.html')
 # TODO: route to /error
 
