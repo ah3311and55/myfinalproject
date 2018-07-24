@@ -26,6 +26,16 @@ def go_to_form():
 @app.route('/Dailyvote')	
 def go_to_Dailyvote():
 	return render_template('Dailyvote.html')
+@app.route('/Weeklyvote')
+def go_to_Weeklyvote():
+	return render_template('Weeklyvote.html')	
+@app.route('/Veganvote')
+def go_to_Veganvote():
+	return render_template('Veganvote.html')	
+@app.route('/Suggestions')	
+def go_to_Suggestions():
+	message = request.form['message']
+	return render_template('SuggestionsPage.html')
 # TODO: route to /error
 
 if __name__ == "__main__":
