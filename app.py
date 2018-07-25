@@ -3,7 +3,7 @@ import dataset, random, os
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-
+db = dataset.connect('postgres://pcpqiiqtxfhuor:c42f976e9ba808eb5a122108768095ba8c0d8fd8d9c9ea3e3e1212aa840c77f6@ec2-50-19-86-139.compute-1.amazonaws.com:5432/ddjpbk8t7a4qav')
 # TODO: set up database
 app.debug = True
 
