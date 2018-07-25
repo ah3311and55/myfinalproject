@@ -32,13 +32,9 @@ p {
 
 img{
   float:right;
-
 }
 
-
-  
-}
-.button {
+a.button {
     background-color: #6D435A;
     border: none;
     color: white;
@@ -50,13 +46,26 @@ img{
     margin-top:3%;
     margin-left:33%;
   }
-.button:hover{
+a.button:hover{
   background: #00332E;
 }
 .form2{
   text-align:center;
   font-size:20px;
-  margin:auto;
+  margin-top:150px;
 
 
 }
+#title{
+  text-align:center;
+  margin-top: 7%
+
+}
+/*#img1{
+  width:50%;
+  height:30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+*/

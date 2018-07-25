@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="../static/css/style.css" /> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <title>My Final Project</title> 
   <ul>
     <li><a href="/home">Home</a></li>
-    <li id= "right"><a href="register">Login</a></li>
+    <li id= "right"><a href="/login">Login</a></li>
 
 
 

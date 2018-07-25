@@ -15,9 +15,9 @@ def default():
 def homepage():
 	return render_template('home.html')
 
-@app.route('/register')
+@app.route('/login')
 def go_to_register():
-	return render_template('register.html')
+	return render_template('login.html')
 @app.route("/formExample", methods=['POST'])
 	
 @app.route("/form", methods=['POST'])
