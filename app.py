@@ -33,7 +33,7 @@ def login_page1():
    #     show_data =False
    if user:
        session['loggedIn']=True
-       return redirect("/form.html")
+       return render_template("form.html")
    else:
        return render_template("login.html",error="The password or username is incorrect")
 
