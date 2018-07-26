@@ -33,6 +33,7 @@ def login_page1():
    #     show_data =False
    if user:
        session['loggedIn']=True
+       session['formsVoted'] = []
        return render_template("form.html")
    else:
        return render_template("login.html",error="The password or username is incorrect")
@@ -79,21 +80,26 @@ def go_back():
 
 @app.route("/submitvote", methods=['POST'])
 def votes():
-	foods = db['food_votes']
-	foodname = request.form['vote']
-	if request.form['vote'] == 'Pizza':
-		pizza = foods.find_one(foodname='pizza')
-		vote_count = pizza['votes']
-		foods.update(dict(foodname='pizza', votes=vote_count+1), ['foodname'])
-
-		return str(list(foods.all()))
-	elif request.form['vote'] == 'Pasta':
-		return "Voted for Pasta!"
-	return render_template('votes.html')
+	form_id = request.form['form_id']
+	if form_id in session['formsVoted']:
+		return render_template('Dailyvote.html', message="You already voted for this option")
+	else:
+		foods = db['food_votes']
+		foodname = request.form['vote']
+		food_entry = foods.find_one(foodname=foodname)
+		if food_entry:
+			vote_count = food_entry['votes']
+			foods.update(dict(foodname=foodname, votes=vote_count+1), ['foodname'])
+		else:
+			foods.insert(dict(foodname=foodname, votes=1))
+		session['formsVoted'].append(form_id)
+		session.modified = True
+		return render_template('votes.html', foods=list(foods.all()))
 # TODO: route to /error
 
 def init():
 	if not db['food_votes'].exists:
+		foods.delete()
 		foods.insert(dict(foodname='pizza', votes=0))
 		foods.insert(dict(foodname='pasta', votes=0))
 

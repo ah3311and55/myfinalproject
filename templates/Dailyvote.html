@@ -31,13 +31,16 @@ function getVote(int) {
 
 <div id = "poll">
 
-
+{% if message %}
+<h1>{{message}}</h1>
+{% endif %}
 <h3>BreakFast</h3>
-<form>
+<form action="/submitvote" method="POST" >
 Omelette:
-<input type="radio" name="vote" onclick="getVote(this.value)">
+<input type="radio" name="vote" value="Omelette">
 <br>Falafel:
-<input type="radio" name="vote" onclick="getVote(this.value)">
+<input type="radio" name="vote" value="Falafel">
+<input type="hidden" name="form_id" value=1>
 <input type="submit" value="submit"> <br> <br> <br>
 </form>
 <h3>Launch</h3>
@@ -46,6 +49,7 @@ Chicken and rice:
 <input type="radio" name="vote" onclick="getVote(this.value)">
 <br>Pasta:
 <input type="radio" name="vote" onclick="getVote(this.value)">
+<input type="hidden" name="form_id" value=2>
 <input type="submit" value="submit"> <br> <br> <br>
 
 </form>
@@ -55,6 +59,7 @@ Chicken Sandwich:
 <input type="radio" name="vote" onclick="getVote(this.value)">
 <br>Hamburger:
 <input type="radio" name="vote" onclick="getVote(this.value)">
+<input type="hidden" name="form_id" value=3>
 <input type="submit" value="submit"> 
 </form>
 </div>
