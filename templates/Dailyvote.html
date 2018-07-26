@@ -1,4 +1,6 @@
+{% extends "base.html" %}
 
+{% block body %}
 <html>
 <head>
   <ul class="form7">
@@ -27,16 +29,9 @@ function getVote(int) {
 </head>
 <body>
 
-<div id="poll">
-<<<<<<< HEAD
-<h3>What food do you prefer</h3>
-<form action='/submitvote' method='POST'>
-  Pasta:
-  <input type="radio" name="vote" value="Pasta">
-  <br>Pizza:
-  <input type="radio" name="vote" value="Pizza">
-  <input type="submit" value="submit">
-=======
+<div id = "poll">
+
+
 <h3>BreakFast</h3>
 <form>
 Omelette:
@@ -57,10 +52,10 @@ Chicken Sandwich:
 <input type="radio" name="vote" onclick="getVote(this.value)">
 <br>Hamburger:
 <input type="radio" name="vote" onclick="getVote(this.value)">
-<input type="submit" value="submit">
->>>>>>> ccc85f84acbe3070f7ccba67ead5469168ea41ab
+<input type="submit" value="submit"> 
 </form>
 </div>
 
 </body>
 </html> 
+{% endblock %}
