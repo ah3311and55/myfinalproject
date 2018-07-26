@@ -1,3 +1,22 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @ah3311and55
+Sign out
+ Watch 0
+ Star 0  Fork 0 ah3311and55/myfinalproject
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
+Tree: 69b385fa64 Find file Copy path myfinalproject/static/css/style.css
+69b385f  31 minutes ago
+@ahmaddumaidi ahmaddumaidi updates
+2 contributors @ahmaddumaidi @subhiawwad
+RawBlameHistory    
+Executable File  114 lines (101 sloc)  1.41 KB
 .h1{
   margin-left:40px;
 }
@@ -6,11 +25,10 @@ p{
 }
 ul {
   list-style-type: none;
-  margin: -10px;
-  padding: 25px;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   background-color: #468189;
-  
 }
 
 li {
@@ -86,11 +104,33 @@ a.button:hover{
   font-size:20px;
   color:#468189;
   padding:70px 80px;
-
  /* margin-bottom:150px;
 */
 }
+#poll{
+  text-align:center;
+  font-size:20px;
+  color:#468189;
+  padding:70px 80px;
+
+}
+#poll2{
+  text-align:center;
+  font-size:20px;
+  color:#468189;
+  padding:70px 80px;
+  
+}
 
 body {
-   background-image: url('../images/food4.jpg');
+  background-image: url('../images/food4.jpg');
 }
+
+/*#img1{
+  width:50%;
+  height:30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+*/
