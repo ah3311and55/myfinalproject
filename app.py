@@ -61,9 +61,9 @@ def register2():
 @app.route('/Dailyvote')	
 def go_to_Dailyvote():
 	return render_template('Dailyvote.html')
-@app.route('/Weeklyvote')
+@app.route('/Fridayvote')
 def go_to_Weeklyvote():
-	return render_template('Weeklyvote.html')	
+	return render_template('Fridayvote.html')	
 @app.route('/Veganvote')
 def go_to_Veganvote():
 	return render_template('Veganvote.html')	
