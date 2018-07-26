@@ -58,8 +58,10 @@ def register2():
 # 	lastName = request.form['lastname']
 # 	gender = request.form['gender']
 # 	return render_template('form.html', firstName = firstName, lastName=lastName, gender=gender)
-@app.route('/Dailyvote')	
+@app.route('/Dailyvote',methods=['POST', 'GET'])	
 def go_to_Dailyvote():
+	votes=db['votes']
+
 	return render_template('Dailyvote.html')
 @app.route('/Weeklyvote')
 def go_to_Weeklyvote():
@@ -74,10 +76,31 @@ def go_to_Suggestions():
 @app.route('/form')
 def go_back():
 	return render_template('form.html')
+
+@app.route("/submitvote", methods=['POST'])
+def votes():
+	foods = db['food_votes']
+	foodname = request.form['vote']
+	if request.form['vote'] == 'Pizza':
+		pizza = foods.find_one(foodname='pizza')
+		vote_count = pizza['votes']
+		foods.update(dict(foodname='pizza', votes=vote_count+1), ['foodname'])
+
+		return str(list(foods.all()))
+	elif request.form['vote'] == 'Pasta':
+		return "Voted for Pasta!"
+	return render_template('votes.html')
 # TODO: route to /error
 
+def init():
+	if not db['food_votes'].exists:
+		foods.insert(dict(foodname='pizza', votes=0))
+		foods.insert(dict(foodname='pasta', votes=0))
+
 if __name__ == "__main__":
-    app.run(port=3000)
+	init()
+	app.run(port=3000)
+
 
 
 

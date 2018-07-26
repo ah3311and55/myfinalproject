@@ -1,36 +1,106 @@
+<?php 
+  include_once 'lib/config.php'; 
+  include_once 'lib/error.php'; 
+  include_once 'lib/functions.php'; 
+?> 
 
-<html>
-<head>
-<script>
-function getVote(int) {
-  if (window.XMLHttpRequest) {
-    
-    xmlhttp=new XMLHttpRequest();
-  } else {  // code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xmlhttp.onreadystatechange=function() {
-    if (this.readyState==4 && this.status==200) {
-      document.getElementById("poll").innerHTML=this.responseText;
-    }
-  }
-  xmlhttp.open("GET","poll_vote.php?vote="+int,true);
-  xmlhttp.send();
-}
-</script>
-</head>
-<body>
+<html> 
+<head> 
+</head> 
+<body> 
 
-<div id="poll">
-<h3>What food do you prefer</h3>
-<form>
-Chicken with rice
-<input type="radio" name="vote" onclick="getVote(this.value)">
-<br>Burger:
-<input type="radio" name="vote" onclick="getVote(this.value)">
-<input type="submit" value="submit">
-</form>
-</div>
+<form method="post" action="storyvotes.php"> 
 
-</body>
-</html> 
+<table> 
+
+<?php 
+
+  if (!($conhandle = mysql_connect($hostname, $dbuser, $dbpass))) 
+    die("Could not connect to $hostname"); 
+
+  if (!(mysql_select_db($dbname, $conhandle))) 
+    showerror(); 
+
+### Begin categories and stories display 
+# 
+  $query = "SELECT distinct category from stories where category != '' order by category ASC"; 
+
+  if (!($categorylist1 = mysql_query ($query, $conhandle))) 
+    showerror(); 
+
+  $resultcount = mysql_num_rows($categorylist1); 
+
+  while ($row = @ mysql_fetch_array($categorylist1)) 
+  { 
+
+  echo "<tr><td colspan=2 class=normal>"; 
+  echo "<b><u><font size=2>$row[category]</font></u></b>"; 
+  echo "</td></tr>"; 
+  echo "<tr><td width=20></td><td class=normal>"; 
+
+  $query = "SELECT category, sid, title, author, url from stories where category = '$row[category]' order by title ASC"; 
+
+  if (!($storylist1 = mysql_query ($query, $conhandle))) 
+    showerror(); 
+
+  $resultcount = mysql_num_rows($storylist1); 
+
+  while ($row = @ mysql_fetch_array($storylist1)) 
+  { 
+
+ echo "<input type=radio name=\"$row[category]\" value=$row[sid]> "; 
+ if (!empty($row[url])) 
+    echo "\n<a target=newwindow href=\"http://$row[url]\">"; 
+ echo "$row[title]"; 
+ if (!empty($row[url])) 
+    echo "</a>"; 
+ echo " by $row[author]<br>"; 
+
+  } 
+
+  echo "<br></td></tr>"; 
+
+ } 
+
+  echo "</table>"; 
+# 
+### end categories and stories display. 
+
+?> 
+
+<center> 
+<input class=Normal type="submit" name="Submit" value="Vote"> <input class=Normal type=reset value="Reset"> 
+</form> 
+
+</center> 
+
+<?php 
+
+### Being update of table with new votes 
+# 
+
+if ( $_POST['submit'] == 'Vote' )  
+{   
+    if ( !( empty( $_POST['Vote']) ) )  
+    {  
+        foreach ( $_POST['Vote'] AS $sid )  
+        {  
+            $sql= "UPDATE stories SET votes = votes + 1 WHERE sid = $_POST[sid]";  
+            mysql_query($sql) OR die('QUERY ERROR:<br />' .mysql_error());  
+        }  
+
+        echo '<p>Thank you.<br />Your votes have been recorded.</b>';  
+    }  
+    else  
+    {  
+        echo '<p>Sorry, you have not made any selections to record.</p>';  
+    }    
+}  
+
+# 
+### end update of table with new votes 
+
+?> 
+
+</body> 
+</html>
