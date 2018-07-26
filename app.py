@@ -71,6 +71,9 @@ def go_to_Veganvote():
 def go_to_Suggestions():
 	# message = request.form['message']
 	return render_template('SuggestionsPage.html')
+@app.route('/form')
+def go_back():
+	return render_template('form.html')
 # TODO: route to /error
 
 if __name__ == "__main__":
