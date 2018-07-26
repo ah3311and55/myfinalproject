@@ -1,7 +1,72 @@
-<!DOCTYPE>
+   <?php
+error_reporting(E_ALL & ~E_NOTICE);
+session_start();
 
-<form action="/CreateMessage" method="POST">
-  <input type="text"  name="message">
-  <input type="submit" value="submit">
+if (isset($_SESSION['uname'])) {
+    $username = $_SESSION['uname'];
+}
 
-</form>
+else {
+    header('Location: login_user.php');
+    die();
+}
+?>
+
+<html>
+<head>
+    <title>Trinity University of Asia Voting System</title>
+</head>
+<body>
+    <img src="images/tua_logo.jpg"><marquee>Practice your right to vote.</marquee><br>
+
+    <center>
+        <a href="/">Home</a> | <a href="results.php">Results</a> | <a href="logout.php">Logout</a><br>
+        <h3>Cast Your Vote</h3>
+        <form action="processvoting.php" method="post">
+        <table cellpadding="4" border="1">
+            <tr>
+                <th>Position</th>
+                <th>Choice 1</th>
+                <th>Choice 2</th>
+            </tr>
+            <tr>
+                <th>President</th>
+                <td><input type="radio" name="president" value="pres1">&nbsp;JOHN MICHAEL KALEMBE<br>College of Business Administration</td>
+                <td><input type="radio" name="president" value="pres2">&nbsp;SUZAN JOHN<br>College of Education</td>
+            </tr>
+            <tr>
+                <th>Vice President</th>
+                <td><input type="radio" name="vice_president" value="vicepres1">&nbsp;JULIUS SAMWEL<br>College of Medical Technology</td>
+                <td><input type="radio" name="vice_president" value="vicepres2">&nbsp;JEUNICE MARIANO<br>College of Business Administration</td>
+            </tr>
+            <tr>
+                <th>Secretary</th>
+                <td><input type="radio" name="secretary" value="sec1">&nbsp;ANGELO CHRSTIAN DE GUZMAN<br>College of Medical Technology</td>
+                <td><input type="radio" name="secretary" value="sec1">&nbsp;MICHAEL SANGA<br>College of Hospitality and Tourism Management</td>
+            </tr>
+            <tr>
+                <th>Treasurer</th>
+                <td><input type="radio" name="treasurer" value="treas1">&nbsp;MARIE DANIELLE THEREZE VALDEZ<br>College of Hospitality and Tourism Management</td>
+                <td><input type="radio" name="treasurer" value="treas1">&nbsp;JEUNICE MARIANO<br>College of Business Administration</td>
+            </tr>
+            <tr>
+                <th>Auditor</th>
+                <td><input type="radio" name="auditor" value="aud1">&nbsp;KOBI TSARLZ GONZALES<br>College of Computing and Information Sciences</td>
+                <td><input type="radio" name="auditor" value="aud1">&nbsp;MARIAN ENTERO<br>College of Business Administration</td>
+            </tr>
+            <tr>
+                <th>Business Manager</th>
+                <td><input type="checkbox" name="bus_manager" value="bus1">&nbsp;MICAH EDILYN TAN<br>College of Arts and Sciences</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <th>Public Relations Officer (PRO)</th>
+                <td><input type="checkbox" name="pro" value="pro1">&nbsp;MARIBETH LIAMZON<br>College of Education</td>
+                <td>N/A</td>
+            </tr>
+        </table>
+        <input type="submit" name="submit" value="Cast Your Vote">&nbsp;&nbsp;<input type="reset" value="Reset">
+    </form>
+</center>
+</body>
+</html>
