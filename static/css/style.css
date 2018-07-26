@@ -6,10 +6,11 @@ p{
 }
 ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin: -10px;
+  padding: 25px;
   overflow: hidden;
   background-color: #468189;
+  
 }
 
 li {
@@ -35,7 +36,7 @@ p {
   font-size: 21px;
 }
 
-img{
+img.right{ 
   float:right;
 }
 
@@ -93,3 +94,11 @@ a.button:hover{
 body {
    background-image: url('../images/food4.jpg');
 }
+/*.Jawwal {
+  position: absolute;
+  top: 10%; 
+  left:60%;
+  width: 100px;
+  height: 25px;
+  transform: translateX(-50%) translateY(-50%);
+}*/
