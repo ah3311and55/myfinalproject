@@ -1,4 +1,9 @@
-
+.h1{
+  margin-left:40px;
+}
+p{
+  margin-left:40px;
+}
 ul {
   list-style-type: none;
   margin: 0;
@@ -44,8 +49,9 @@ a.button {
     display: inline-block;
     font-size: 20px;
     margin-top:3%;
-    margin-left:33%;
+    margin-left:37%;
   }
+
 a.button:hover{
   background: #00332E;
 }
@@ -79,8 +85,8 @@ a.button:hover{
   font-size:20px;
   color:#468189;
   padding:70px 80px;
- /* margin-bottom:150px;*/
-
+ /* margin-bottom:150px;
+*/
 }
 
 /*#img1{
