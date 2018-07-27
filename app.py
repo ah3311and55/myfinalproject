@@ -95,17 +95,37 @@ def votes():
 		session['formsVoted'].append(form_id)
 		session.modified = True
 		return render_template('votes.html', foods=list(foods.all()))
+@app.route("/accebtvote", methods=['POST'])
+def votees():
+	form_id = request.form['form_id']
+	if form_id in session['formsVoted']:
+		return render_template('Dailyvote.html', message="You already voted for this option")
+	else:
+		foods = db['food_votes']
+		foodname = request.form['vote']
+		food_entry = foods.find_one(foodname=foodname)
+		if food_entry:
+			vote_count = food_entry['votes']
+			foods.update(dict(foodname=foodname, votes=vote_count+1), ['foodname'])
+		else:
+			foods.insert(dict(foodname=foodname, votes=1))
+		session['formsVoted'].append(form_id)
+		session.modified = True
+		return render_template('votes.html', foods=list(foods.all()))
 # TODO: route to /error
 
 def init():
 	if not db['food_votes'].exists:
-		foods.delete()
-		foods.insert(dict(foodname='pizza', votes=0))
+		
+		foods.insert(dict(foodname='Omelette', votes=0))
+		foods.insert(dict(foodname='Falafel', votes=0))
+		foods.insert(dict(foodname='Chicken and rice', votes=0))
 		foods.insert(dict(foodname='pasta', votes=0))
 
 if __name__ == "__main__":
 	init()
 	app.run(port=3000)
+
 
 
 
